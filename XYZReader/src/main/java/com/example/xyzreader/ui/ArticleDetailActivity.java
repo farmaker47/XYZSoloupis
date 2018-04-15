@@ -10,11 +10,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
+
 
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
@@ -23,8 +27,8 @@ import com.example.xyzreader.data.ItemsContract;
 /**
  * An activity representing a single Article detail screen, letting you swipe between articles.
  */
-public class ArticleDetailActivity extends ActionBarActivity
-        implements LoaderManager.LoaderCallbacks<Cursor> {
+public class ArticleDetailActivity extends AppCompatActivity
+        implements LoaderManager.LoaderCallbacks<Cursor>{
 
     private Cursor mCursor;
     private long mStartId;
@@ -48,7 +52,19 @@ public class ArticleDetailActivity extends ActionBarActivity
         }
         setContentView(R.layout.activity_article_detail);
 
+        //transition
+        //
+
         getLoaderManager().initLoader(0, null, this);
+
+        /*Toolbar tBar = (Toolbar) findViewById(R.id.toolBarDetails);
+        //Up navigation
+        setSupportActionBar(tBar);*/
+
+        /*//Listen for changes in the back stack
+        getSupportFragmentManager().addOnBackStackChangedListener(this);
+        //Handle when activity is recreated like on orientation Change
+        shouldDisplayHomeUp();*/
 
         mPagerAdapter = new MyPagerAdapter(getFragmentManager());
         mPager = (ViewPager) findViewById(R.id.pager);
