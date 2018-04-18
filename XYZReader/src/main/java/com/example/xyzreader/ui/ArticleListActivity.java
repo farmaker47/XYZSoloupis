@@ -8,7 +8,10 @@ import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.graphics.Palette;
@@ -60,16 +63,21 @@ public class ArticleListActivity extends ActionBarActivity implements
         setContentView(R.layout.activity_article_list_soloupis);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-
         final View toolbarContainerView = findViewById(R.id.toolbar_container);
-
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
-
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        getLoaderManager().initLoader(0, null, this);
 
-        if (savedInstanceState == null) {
-            refresh();
+        //Upon creation we check if there is internet connection
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+        if (ni == null || !ni.isConnected()) {
+            Snackbar.make(mRecyclerView, R.string.checkInternet, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            return;
+        } else {
+            getLoaderManager().initLoader(0, null, this);
+            if (savedInstanceState == null) {
+                refresh();
+            }
         }
     }
 
@@ -98,6 +106,7 @@ public class ArticleListActivity extends ActionBarActivity implements
             if (UpdaterService.BROADCAST_ACTION_STATE_CHANGE.equals(intent.getAction())) {
                 mIsRefreshing = intent.getBooleanExtra(UpdaterService.EXTRA_REFRESHING, false);
                 updateRefreshingUI();
+
             }
         }
     };
