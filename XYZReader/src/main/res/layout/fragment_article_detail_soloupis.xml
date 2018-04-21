@@ -25,7 +25,8 @@
                     android:id="@+id/photo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/image_of_book"/>
 
             </FrameLayout>
 
@@ -111,7 +112,7 @@
         android:id="@+id/share_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_marginEnd="@dimen/fab_margin"
         android:src="@drawable/ic_share"
         app:elevation="6dp"
         app:layout_anchor="@id/appBarLayoutDetails"

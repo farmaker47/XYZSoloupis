@@ -40,7 +40,6 @@ public class ArticleDetailFragment extends Fragment implements
     private static final String TAG = "ArticleDetailFragment";
 
     public static final String ARG_ITEM_ID = "item_id";
-    private static final float PARALLAX_FACTOR = 1.25f;
     private TextView bylineView,titleView,bodyView;
 
     private Cursor mCursor;
@@ -129,7 +128,7 @@ public class ArticleDetailFragment extends Fragment implements
             public void onClick(View view) {
                 startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(getActivity())
                         .setType("text/plain")
-                        .setText("Read this marvelous book: " + titleView.getText().toString())
+                        .setText(getString(R.string.marv_book) + titleView.getText().toString())
                         .getIntent(), getString(R.string.action_share)));
             }
         });
