@@ -5,5 +5,12 @@
     <item name="detail_body_line_spacing_multiplier" format="float" type="fraction">1.1</item>
 
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="details_appbarLayout_height">260dp</dimen>
+    <dimen name="xyzReaderImageHeight">70dp</dimen>
+    <dimen name="recyclerViewPaddingBottom">26dp</dimen>
+    <dimen name="toolbarParallaxMarginTop">15dp</dimen>
+    <dimen name="marginLinearLeftRight">8dp</dimen>
+    <dimen name="paddingLinearBottomTop">16dp</dimen>
+    <dimen name="marginCard">4dp</dimen>
 
 </resources>

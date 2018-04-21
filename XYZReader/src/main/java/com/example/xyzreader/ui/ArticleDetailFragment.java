@@ -144,7 +144,6 @@ public class ArticleDetailFragment extends Fragment implements
             return dateFormat.parse(date);
         } catch (ParseException ex) {
             Log.e(TAG, ex.getMessage());
-            Log.i(TAG, "passing today's date");
             return new Date();
         }
     }
@@ -154,9 +153,7 @@ public class ArticleDetailFragment extends Fragment implements
             return;
         }
 
-
         bylineView.setMovementMethod(new LinkMovementMethod());
-
 
         /*bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));*/
 
@@ -230,7 +227,6 @@ public class ArticleDetailFragment extends Fragment implements
 
         mCursor = cursor;
         if (mCursor != null && !mCursor.moveToFirst()) {
-            Log.e(TAG, "Error reading item detail cursor");
             mCursor.close();
             mCursor = null;
         }

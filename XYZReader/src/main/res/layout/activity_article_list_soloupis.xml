@@ -18,7 +18,7 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="70dp"
+                android:layout_height="@dimen/xyzReaderImageHeight"
                 android:src="@drawable/logo"
                 android:layout_gravity="center_horizontal"
                 android:contentDescription="@string/app_name" />
@@ -40,7 +40,7 @@
             android:scrollbarStyle="outsideOverlay"
             android:paddingLeft="@dimen/list_side_margin"
             android:paddingRight="@dimen/list_side_margin"
-            android:paddingBottom="26dp"/>
+            android:paddingBottom="@dimen/recyclerViewPaddingBottom"/>
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </android.support.design.widget.CoordinatorLayout>

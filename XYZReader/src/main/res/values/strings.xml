@@ -7,5 +7,6 @@
     <string name="checkInternet">Please check internet connection</string>
     <string name="marv_book">Read this marvelous book:</string>
     <string name="image_of_book">image of book</string>
+    <string name="unknown_Uri">Unknown uri:</string>
 
 </resources>
