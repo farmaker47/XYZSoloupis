@@ -58,13 +58,16 @@ public class UpdaterService extends IntentService {
                 throw new JSONException("Invalid parsed item array");
             }
 
+            // I encountered a lag during creation of detail activity and rotation of screen
+            // so I trimmed the body text to 900 lenght..like
+            // https://stackoverflow.com/questions/5414657/extract-substring-from-a-string
             for (int i = 0; i < array.length(); i++) {
                 ContentValues values = new ContentValues();
                 JSONObject object = array.getJSONObject(i);
                 values.put(ItemsContract.Items.SERVER_ID, object.getString("id"));
                 values.put(ItemsContract.Items.AUTHOR, object.getString("author"));
                 values.put(ItemsContract.Items.TITLE, object.getString("title"));
-                values.put(ItemsContract.Items.BODY, object.getString("body"));
+                values.put(ItemsContract.Items.BODY, object.getString("body").substring(0,900));
                 values.put(ItemsContract.Items.THUMB_URL, object.getString("thumb"));
                 values.put(ItemsContract.Items.PHOTO_URL, object.getString("photo"));
                 values.put(ItemsContract.Items.ASPECT_RATIO, object.getString("aspect_ratio"));
