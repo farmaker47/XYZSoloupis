@@ -64,7 +64,7 @@
                 android:layout_gravity="bottom"
                 android:layout_marginLeft="@dimen/marginLinearLeftRight"
                 android:layout_marginRight="@dimen/marginLinearLeftRight"
-                android:elevation="6dp"
+                android:elevation="4dp"
                 android:orientation="vertical"
                 android:paddingBottom="@dimen/paddingLinearBottomTop"
                 android:paddingTop="@dimen/paddingLinearBottomTop"
