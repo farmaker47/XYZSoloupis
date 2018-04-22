@@ -44,7 +44,7 @@ public class ArticleDetailFragment extends Fragment implements
     private static final String TAG = "ArticleDetailFragment";
 
     public static final String ARG_ITEM_ID = "item_id";
-    private TextView bylineView,titleView,bodyView;
+    private TextView bylineView, titleView, bodyView;
 
     private Cursor mCursor;
     private long mItemId;
@@ -139,12 +139,6 @@ public class ArticleDetailFragment extends Fragment implements
 
         bindViews();
 
-        //setting anhor gravity of FAB
-        FloatingActionButton fab = (FloatingActionButton) mRootView.findViewById(R.id.share_fab);
-        CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
-        lp.anchorGravity = Gravity.BOTTOM | GravityCompat.END;
-        fab.setLayoutParams(lp);
-
         return mRootView;
     }
 
@@ -158,14 +152,23 @@ public class ArticleDetailFragment extends Fragment implements
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        //setting anhor gravity of FAB
+        FloatingActionButton fab = (FloatingActionButton) mRootView.findViewById(R.id.share_fab);
+        CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
+        lp.anchorGravity = Gravity.BOTTOM | GravityCompat.END;
+        lp.setAnchorId(R.id.appBarLayoutDetails);
+        fab.setLayoutParams(lp);
+    }
+
     private void bindViews() {
         if (mRootView == null) {
             return;
         }
 
         bylineView.setMovementMethod(new LinkMovementMethod());
-
-        /*bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));*/
 
         if (mCursor != null) {
             mRootView.setAlpha(0);
