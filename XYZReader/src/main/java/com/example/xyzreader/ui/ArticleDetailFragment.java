@@ -11,6 +11,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
@@ -45,6 +46,8 @@ public class ArticleDetailFragment extends Fragment implements
 
     public static final String ARG_ITEM_ID = "item_id";
     private TextView bylineView, titleView, bodyView;
+    private NestedScrollView nestedScrollView;
+    private FloatingActionButton fab;
 
     private Cursor mCursor;
     private long mItemId;
@@ -112,6 +115,8 @@ public class ArticleDetailFragment extends Fragment implements
         titleView = (TextView) mRootView.findViewById(R.id.article_title);
         bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         bodyView = (TextView) mRootView.findViewById(R.id.article_body);
+        nestedScrollView = (NestedScrollView)mRootView.findViewById(R.id.nestedScrollViewDetails);
+        fab = (FloatingActionButton) mRootView.findViewById(R.id.share_fab);
 
         Toolbar toolbar = (Toolbar) mRootView.findViewById(R.id.toolBarDetails);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
@@ -139,6 +144,17 @@ public class ArticleDetailFragment extends Fragment implements
 
         bindViews();
 
+        nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (scrollY > oldScrollY) {
+                    fab.hide();
+                } else {
+                    fab.show();
+                }
+            }
+        });
+
         return mRootView;
     }
 
@@ -150,21 +166,6 @@ public class ArticleDetailFragment extends Fragment implements
             Log.e(TAG, ex.getMessage());
             return new Date();
         }
-    }
-
-
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        //setting anhor gravity of FAB
-        FloatingActionButton fab = (FloatingActionButton) mRootView.findViewById(R.id.share_fab);
-        CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
-        lp.anchorGravity = Gravity.BOTTOM | GravityCompat.END;
-        lp.setAnchorId(R.id.appBarLayoutDetails);
-        fab.setLayoutParams(lp);
-
     }
 
     private void bindViews() {
