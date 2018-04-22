@@ -114,7 +114,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/fab_margin"
         android:src="@drawable/ic_share"
-        app:elevation="6dp"
-        app:layout_anchor="@id/appBarLayoutDetails"/>
+        app:elevation="6dp" />
 
 </android.support.design.widget.CoordinatorLayout>

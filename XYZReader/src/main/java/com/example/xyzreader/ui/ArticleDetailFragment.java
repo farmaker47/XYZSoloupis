@@ -152,15 +152,19 @@ public class ArticleDetailFragment extends Fragment implements
         }
     }
 
+
+
     @Override
     public void onResume() {
         super.onResume();
+
         //setting anhor gravity of FAB
         FloatingActionButton fab = (FloatingActionButton) mRootView.findViewById(R.id.share_fab);
         CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
         lp.anchorGravity = Gravity.BOTTOM | GravityCompat.END;
         lp.setAnchorId(R.id.appBarLayoutDetails);
         fab.setLayoutParams(lp);
+
     }
 
     private void bindViews() {
@@ -174,8 +178,9 @@ public class ArticleDetailFragment extends Fragment implements
             mRootView.setAlpha(0);
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
-            //
+
             titleView.setText(mCursor.getString(ArticleLoader.Query.TITLE));
+
             Date publishedDate = parsePublishedDate();
             if (!publishedDate.before(START_OF_EPOCH.getTime())) {
                 bylineView.setText(Html.fromHtml(

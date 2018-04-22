@@ -25,8 +25,8 @@
                     android:id="@+id/photo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="@string/image_of_book"/>
+                    android:contentDescription="@string/image_of_book"
+                    android:scaleType="centerCrop" />
 
             </FrameLayout>
 
@@ -114,6 +114,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/fab_margin"
         android:src="@drawable/ic_share"
-        app:elevation="6dp"/>
+        app:elevation="6dp" />
 
 </android.support.design.widget.CoordinatorLayout>
