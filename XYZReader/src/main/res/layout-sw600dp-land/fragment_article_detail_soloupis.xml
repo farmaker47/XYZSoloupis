@@ -8,7 +8,8 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayoutDetails"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/details_appbarLayout_height">
+        android:layout_height="@dimen/details_appbarLayout_height"
+        app:elevation="4dp">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
