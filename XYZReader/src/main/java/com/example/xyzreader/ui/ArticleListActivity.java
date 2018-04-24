@@ -31,6 +31,7 @@ import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 import com.example.xyzreader.data.ItemsContract;
 import com.example.xyzreader.data.UpdaterService;
+import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -194,6 +195,7 @@ public class ArticleListActivity extends AppCompatActivity implements
 
             //load some background color like detailFragment
             ImageLoader loaderForBack = ImageLoaderHelper.getInstance(ArticleListActivity.this).getImageLoader();
+            /*Picasso.with(ArticleListActivity.this).load(mCursor.getString(ArticleLoader.Query.PHOTO_URL)).into(holder.thumbnailView);*/
             holder.thumbnailView.setImageUrl(mCursor.getString(ArticleLoader.Query.THUMB_URL), loaderForBack);
             loaderForBack.get(mCursor.getString(ArticleLoader.Query.THUMB_URL), new ImageLoader.ImageListener() {
                 @Override
