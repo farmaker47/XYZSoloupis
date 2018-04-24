@@ -200,7 +200,6 @@ public class ArticleListActivity extends AppCompatActivity implements
             loaderForBack.get(mCursor.getString(ArticleLoader.Query.THUMB_URL), new ImageLoader.ImageListener() {
                 @Override
                 public void onErrorResponse(VolleyError volleyError) {
-
                 }
 
                 @Override
